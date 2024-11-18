@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>listas de alunos</title>
+</head>
+<body>
+    <script>
+        function somaNotas() {
+        var notas = [];
+        var alunos = [];
+        var materias = 3;
+        var nome = [];  
+
+        for (var i = 0; i < 5; i++) {
+            var nomes=prompt("Digite o nome dos alunos"); 
+            nome.push(nomes); 
+            let notasA = [];
+
+        for (var j = 0; j < materias; j++) {
+            var nota = parseFloat(prompt("Digite a nota para a Disciplina"));
+            notasA.push(nota);  
+            }
+            notas.push(notasA); 
+            }
+            return { notas, nome };  
+        }
+
+        function mediafim(notas, disciplina) {
+        var soma = 0;
+        var quantidade=notas.length;
+  
+        for (var i = 0; i < quantidade; i++) {
+        soma += notas[i][disciplina];
+        }
+
+        var media=soma/quantidade;
+        var resultado="A média dos 5 alunos na Disciplina escolhida foi:" + media  + "<br>";
+
+        if (media >= 6) {
+            resultado += "eles estão aprovados";
+        } else if (media >= 4 && media < 6) {
+            resultado += "infelismente este alunos iram ficar de Recuperação";
+        } else {
+            resultado += "esses dai ja Reprovaram";
+        }
+
+        document.write(resultado + "<br>");  
+        }
+        function menu() {
+        let continuar = true;
+        let {notas,nome } = somaNotas(); 
+
+            while (continuar) {
+                var materia=parseInt(prompt("Escolha uma disciplina (1 - logica de programação, 2 - operação de software e aplicativo , 3 - game art,")) - 1;
+                mediafim(notas, materia);  
+                continuar = prompt("Deseja calcular a média de outra disciplina tambem?,s/n ").toLowerCase() === "s";
+            }
+        }
+        menu();  
+    </script>
+</body>
+</html>
