@@ -10,7 +10,7 @@
         function somaNotas() {
             var notas = [];
             var alunos = [];
-            var materias = 4; 
+            var materias = 4;  
             var nome = [];
 
             for (var i = 0; i < 5; i++) {
@@ -19,7 +19,7 @@
                 let notasA = [];
 
                 for (var j = 0; j < materias; j++) {
-                    var nota = parseFloat(prompt("Digite a nota para a Disciplina. "));
+                    var nota = parseFloat(prompt("Digite a nota para a Disciplina "));
                     notasA.push(nota);
                 }
                 notas.push(notasA);
@@ -36,7 +36,7 @@
             }
 
             var media = soma / quantidade;
-            var resultado = "A média dos 5 alunos na Disciplina escolhida foi: " + media + "<br>";
+            var resultado = "A média dos 5 alunos na Disciplina escolhida foi: " + media +"<br>";
 
             if (media >= 6) {
                 resultado += "Eles estão aprovados.";
