@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listas de Alunos</title>
+</head>
+<body>
+    <script>
+        function somaNotas() {
+            var notas = [];
+            var alunos = [];
+            var materias = 4;  
+            var nome = [];
+
+            for (var i = 0; i < 5; i++) {
+                var nomes = prompt("Digite o nome dos alunos");
+                nome.push(nomes);
+                let notasA = [];
+
+                for (var j = 0; j < materias; j++) {
+                    var nota = parseFloat(prompt("Digite a nota para a Disciplina "));
+                    notasA.push(nota);
+                }
+                notas.push(notasA);
+            }
+            return { notas, nome };
+        }
+
+        function mediafim(notas, disciplina) {
+            var soma = 0;
+            var quantidade = notas.length;
+
+            for (var i = 0; i < quantidade; i++) {
+                soma += notas[i][disciplina];
+            }
+
+            var media = soma / quantidade;
+            var resultado = "A média dos 5 alunos na Disciplina escolhida foi: " + media +"<br>";
+
+            if (media >= 6) {
+                resultado += "Eles estão aprovados.";
+            } else if (media >= 4 && media < 6) {
+                resultado += "Infelizmente, estes alunos irão ficar de Recuperação.";
+            } else {
+                resultado += "Esses alunos já reprovaram.";
+            }
+
+            document.write(resultado + "<br><br>");
+        }
+
+        function menu() {
+            let continuar = true;
+            let { notas, nome } = somaNotas();
+
+            while (continuar) {
+                var materia = parseInt(prompt("Escolha uma disciplina:\n1 - Lógica de Programação\n2 - Operação de Software e Aplicativo\n3 - Game Art\n4 - DJW")) - 1;
+                
+                if (materia >= 0 && materia < 4) {
+                    mediafim(notas, materia);
+                } else {
+                    alert("Escolha uma opção válida!");
+                }
+
+                continuar = prompt("Deseja calcular a média de outra disciplina também? (s/n)").toLowerCase() === "s";
+            }
+        }
+
+        menu();  
+    </script>
+</body>
+</html>
